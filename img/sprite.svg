@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <symbol id="btn-main-icon" viewBox="0 0 30 19">
+    <path d="M1 9.5L29 9.50003" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 0.5L29 9.5L18 18.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="play-icon" viewBox="0 0 68 68">
+    <circle cx="34" cy="34" r="33.5"/>
+    <path d="M29.5615 47.4522C28.5633 48.0948 27.2496 47.3781 27.2496 46.1909L27.2496 22.0238C27.2496 20.8366 28.5633 20.12 29.5615 20.7626L48.332 32.8461C49.2494 33.4367 49.2494 34.778 48.332 35.3686L29.5615 47.4522Z"/>
+  </symbol>
+  <symbol id="menu-close-cion" viewBox="0 0 32 32">
+    <rect x="1.15039" y="-0.263672" width="44" height="2" rx="1" transform="rotate(45 1.15039 -0.263672)" fill="#1E252B"/>
+    <rect x="32.2637" y="1.15063" width="44" height="2" rx="1" transform="rotate(135 32.2637 1.15063)" fill="#1E252B"/>
+  </symbol>
+  <symbol id="header-back-menu" viewBox="0 0 42 28">
+    <path d="M40.9043 14.1147L1.00006 14.1147" stroke="#1E252B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16.7954 1.22851L1 14.1143L16.7954 27" stroke="#1E252B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
