@@ -1876,7 +1876,7 @@ h2 {
 
 .subscription {
   position: relative;
-  background-image: url("../../img/subscription-bg.jpg");
+  background-image: url("../img/subscription-bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
