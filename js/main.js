@@ -127,20 +127,20 @@ function hideBlockMenu(menuItems, menuItemsContent) {
 
 var tl = new TimelineMax();
 gsap.registerPlugin(ScrollToPlugin);
-var slideUp = document.querySelectorAll('.slideUp'),
-    slideDown = document.querySelectorAll('.slideDown'),
+var slideDown = document.querySelectorAll('.slideDown'),
     slideLeft = document.querySelectorAll('.slideLeft'),
-    slideRight = document.querySelectorAll('.slideRigt');
+    slideRight = document.querySelectorAll('.slideRigt'),
+    slideUpOne = document.querySelectorAll('.slideUpOne');
 var body = document.querySelector('body');
 var headerMenu = document.querySelector('#header-menu'),
     headerMenuBlock = document.querySelector('#header-menu-block'),
     headerMenuGumb = document.querySelector('#header-nav-gumb'),
-    headerMenuClose = document.querySelector('#header-menu-close'); // slideUp 
+    headerMenuClose = document.querySelector('#header-menu-close'); // slideUpOne
 
-slideUp.forEach(function (slideUpCurrent) {
-  gsap.from(slideUpCurrent, 1.5, {
+slideUpOne.forEach(function (slideUpOneCurrent) {
+  gsap.from(slideUpOneCurrent, 1.5, {
     scrollTrigger: {
-      trigger: slideUpCurrent,
+      trigger: slideUpOneCurrent,
       start: 'top 90%'
     },
     opacity: 0,
@@ -273,3 +273,21 @@ function progressBarFunc(section, progressLine) {
     ease: 'none'
   });
 }
+
+var gridBlocks = document.querySelectorAll('.slideBlock');
+gridBlocks.forEach(function (gridBlockCurrent) {
+  if (gridBlockCurrent) {
+    var gridItems = gridBlockCurrent.querySelectorAll('.slideUp');
+    var timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: gridBlockCurrent,
+        start: "top 80%"
+      }
+    }).from(gridItems, {
+      y: "100%",
+      stagger: 0.2,
+      duration: 1,
+      ease: "power4.out"
+    });
+  }
+});
