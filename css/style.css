@@ -620,6 +620,11 @@ h2 {
   background-color: #0099FF;
 }
 
+.link-line.type-3::after {
+  width: 0;
+  background-color: #ffffff;
+}
+
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff"), url("../fonts/Montserrat-Regular.ttf") format("ttf"), url("../fonts/Montserrat-Regular.eot") format("eot"), url("../fonts/Montserrat-Regular.svg") format("svg");
@@ -2074,6 +2079,10 @@ h2 {
 
   .link-line.type-2:hover::after {
     width: 0;
+  }
+
+  .link-line.type-3:hover::after {
+    width: 100%;
   }
 
   .header__gumb:hover::before {
