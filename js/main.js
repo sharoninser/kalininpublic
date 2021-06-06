@@ -98,6 +98,89 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
     });
+  } // accordion 
+
+
+  var questionsAccordion = document.querySelector('.questions-accordion');
+
+  if (questionsAccordion) {
+    var questionsAccordionItems = questionsAccordion.querySelectorAll('.questions-accordion-item');
+    questionsAccordionItems.forEach(function (questionsAccordionItem) {
+      var questionsAccordionName = questionsAccordionItem.querySelector('.questions-accordion-item-question'),
+          questionsAccordionAnswer = questionsAccordionItem.querySelector('.questions-accordion-item-answer');
+      questionsAccordionName.addEventListener('click', function () {
+        if (questionsAccordionItem.classList.contains('active')) {
+          questionsAccordionItem.classList.remove('active');
+          questionsAccordionAnswer.style.maxHeight = 0;
+        } else {
+          questionsAccordionItem.classList.add('active');
+          questionsAccordionAnswer.style.maxHeight = questionsAccordionAnswer.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  var clientsLogoSlider = document.querySelector('.clients-logo-slider'),
+      reviewsSlider = document.querySelector('.reviews-slider'),
+      casesSlider = document.querySelector('.cases-slider');
+
+  if (clientsLogoSlider) {
+    var clientsLogoSwiper = new Swiper(clientsLogoSlider, {
+      loop: true,
+      slidesPerView: 5,
+      slidesPerGroup: 1,
+      speed: 6000,
+      observer: true,
+      observerParents: true,
+      observerSlideChildren: true,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false
+      }
+    });
+  }
+
+  if (reviewsSlider) {
+    var reviewsSwiper = new Swiper(reviewsSlider, {
+      loop: true,
+      slidesPerView: 3.4,
+      slidesPerGroup: 1,
+      speed: 1500,
+      observer: true,
+      observerParents: true,
+      observerSlideChildren: true,
+      centeredSlides: true,
+      spaceBetween: 64,
+      autoplay: {
+        delay: 1000,
+        disableOnInteraction: false
+      }
+    });
+    reviewsSlider.addEventListener('mouseenter', function () {
+      reviewsSwiper.autoplay.stop();
+    });
+    reviewsSlider.addEventListener('mouseleave', function () {
+      reviewsSwiper.autoplay.start();
+    });
+  }
+
+  if (casesSlider) {
+    var casesArrowPrev = casesSlider.closest('.cases-section').querySelector('.swiper-button-prev'),
+        casesArrowNext = casesSlider.closest('.cases-section').querySelector('.swiper-button-next');
+    var casesSwiper = new Swiper(casesSlider, {
+      loop: true,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      observer: true,
+      observerParents: true,
+      observerSlideChildren: true,
+      allowTouchMove: false,
+      navigation: {
+        nextEl: casesArrowNext,
+        prevEl: casesArrowPrev
+      }
+    });
   }
 });
 
@@ -130,7 +213,8 @@ gsap.registerPlugin(ScrollToPlugin);
 var slideDown = document.querySelectorAll('.slideDown'),
     slideLeft = document.querySelectorAll('.slideLeft'),
     slideRight = document.querySelectorAll('.slideRigt'),
-    slideUpOne = document.querySelectorAll('.slideUpOne');
+    slideUpOne = document.querySelectorAll('.slideUpOne'),
+    slideFade = document.querySelectorAll('.slideFade');
 var body = document.querySelector('body');
 var headerMenu = document.querySelector('#header-menu'),
     headerMenuBlock = document.querySelector('#header-menu-block'),
@@ -187,10 +271,23 @@ slideWrapAll.forEach(function (slideWrapCurrent) {
       ease: Power4.easeOut
     });
   }
+}); // slideFade
+
+slideFade.forEach(function (slideFadeCurrent) {
+  gsap.from(slideFadeCurrent, 2, {
+    scrollTrigger: {
+      trigger: slideFadeCurrent,
+      start: 'top 50%'
+    },
+    opacity: 0,
+    ease: Power4.easeOut
+  });
 }); // progress bar 
 
 var buySection = document.querySelector('.buy'),
-    subscriptionSection = document.querySelector('.subscription');
+    subscriptionSection = document.querySelector('.subscription'),
+    resultSection = document.querySelector('.results-section'),
+    sloganSection = document.querySelector('.slogan');
 
 if (buySection) {
   var buySectionLine = buySection.querySelector('.progress-bar progress');
@@ -200,6 +297,16 @@ if (buySection) {
 if (subscriptionSection) {
   var subscriptionSectionLine = subscriptionSection.querySelector('.progress-bar progress');
   progressBarFunc(subscriptionSection, subscriptionSectionLine);
+}
+
+if (resultSection) {
+  var resultSectionLine = resultSection.querySelector('.progress-bar progress');
+  progressBarFunc(resultSection, resultSectionLine);
+}
+
+if (sloganSection) {
+  var sloganSectionLine = sloganSection.querySelector('.progress-bar progress');
+  progressBarFunc(sloganSection, sloganSectionLine);
 } // show/hide menu 
 
 
@@ -285,9 +392,44 @@ gridBlocks.forEach(function (gridBlockCurrent) {
       }
     }).from(gridItems, {
       y: "100%",
+      opacity: 0,
       stagger: 0.2,
       duration: 1,
       ease: "power4.out"
     });
   }
 });
+var workPlanSection = document.querySelector('.work-plan-steps');
+
+if (workPlanSection) {
+  var workPlanSteps = workPlanSection.querySelectorAll('.work-plan-steps-item');
+  workPlanSteps.forEach(function (workPlanStepCurrent) {
+    var timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: workPlanSection,
+        start: "top 60%"
+      }
+    }).to(workPlanSteps, {
+      className: "work-plan-steps-item active",
+      stagger: .5,
+      ease: "none"
+    });
+  });
+} // steps color 
+
+
+var workingStepSection = document.querySelector('.working-steps');
+
+if (workingStepSection) {
+  var workingSteps = workingStepSection.querySelectorAll('.working-step');
+  workingSteps.forEach(function (workingStep) {
+    var workingStepLabel = workingStep.querySelectorAll('.label-step');
+    gsap.to(workingStepLabel, 1.5, {
+      scrollTrigger: {
+        trigger: workingStep,
+        start: 'top 50%'
+      },
+      className: "label-step active"
+    });
+  });
+}
